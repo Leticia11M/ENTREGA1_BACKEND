@@ -19,11 +19,8 @@ async function atualizarProduto(id, dadosAtualizados) {
 
             {
                 $set: {
-
                     ...dadosAtualizados,
-
                     atualizadoEm: new Date()
-
                 }
             }
 

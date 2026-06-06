@@ -2,15 +2,17 @@ import connect from "../database/connect.js";
 import { logError, logInfo } from "../logger/logger.js";
 
 async function inserirProduto(produto) {
-
     try {
-
         if (!produto.nome) {
             throw new Error("Campo obrigatório ausente: nome");
         }
 
-        if (!produto.preco) {
-            throw new Error("Campo obrigatório ausente: preco");
+        if (produto.preco === undefined || produto.preco === null || isNaN(produto.preco)) {
+            throw new Error("Campo obrigatório ausente ou inválido: preço");
+        }
+
+        if (produto.estoque === undefined || produto.estoque === null || isNaN(produto.estoque)) {
+            throw new Error("Campo obrigatório ausente ou inválido: estoque");
         }
 
         const db = await connect();
@@ -18,16 +20,13 @@ async function inserirProduto(produto) {
         const collection = db.collection("produtos");
 
         const resultado = await collection.insertOne({
-
             nome: produto.nome,
             descricao: produto.descricao,
             preco: produto.preco,
             estoque: produto.estoque,
             categoria: produto.categoria,
-
             criadoEm: new Date(),
             atualizadoEm: new Date()
-
         });
 
         logInfo(
@@ -38,7 +37,6 @@ async function inserirProduto(produto) {
         return resultado;
 
     } catch (erro) {
-
         logError(
             "inserirProduto",
             "Erro ao inserir produto",
@@ -46,9 +44,7 @@ async function inserirProduto(produto) {
         );
 
         throw erro;
-
     }
-
 }
 
 export default inserirProduto;

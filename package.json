@@ -5,13 +5,18 @@
   "type": "module",
   "main": "src/index.js",
   "scripts": {
-    "dev": "node src/index.js"
+    "dev": "node src/app.js",
+    "teste": "node src/index.js"
   },
   "keywords": [],
   "author": "Letícia",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^17.4.2",
+    "ejs": "^6.0.1",
+    "express": "^5.2.1",
+    "express-session": "^1.19.0",
+    "jsonwebtoken": "^9.0.3",
     "mongodb": "^7.2.0"
   }
 }

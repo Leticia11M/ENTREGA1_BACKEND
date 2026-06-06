@@ -1,3 +1,10 @@
 [19/05/2026, 02:47:55] [ERROR] [inserirProduto] Erro ao inserir produto - Campo obrigatório ausente: nome
 [19/05/2026, 03:01:04] [INFO] [inserirProduto] Produto inserido com id: 6a0bfca08f1ee73102354816
 [19/05/2026, 03:18:01] [INFO] [inserirProduto] Produto inserido com id: 6a0c0099bf78d68810c7a6e4
+[05/06/2026, 20:26:24] [INFO] [inserirProduto] Produto inserido com id: 6a235b20503304f9b934971a
+[05/06/2026, 22:43:46] [ERROR] [inserirProduto] Erro ao inserir produto - Campo obrigatório ausente: nome
+[05/06/2026, 22:53:10] [INFO] [inserirProduto] Produto inserido com id: 6a237d861cc8aeca88a5d036
+[05/06/2026, 23:39:41] [ERROR] [inserirProduto] Erro ao inserir produto - Campo obrigatório ausente: nome
+[05/06/2026, 23:39:47] [ERROR] [inserirProduto] Erro ao inserir produto - Campo obrigatório ausente: nome
+[05/06/2026, 23:40:44] [ERROR] [inserirProduto] Erro ao inserir produto - Campo obrigatório ausente: nome
+[05/06/2026, 23:46:23] [INFO] [inserirProduto] Produto inserido com id: 6a2389ffb59df2292ea62d0a
