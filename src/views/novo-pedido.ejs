@@ -1,0 +1,82 @@
+<html>
+<head>
+    <title>Novo Pedido</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="form-container">
+
+        <h1>Cadastrar Pedido</h1>
+
+        <form action="/pedidos" method="POST">
+
+            <label>Cliente:</label>
+            <input type="text" name="cliente" required>
+
+            <label>Produtos cadastrados:</label>
+
+            <% produtos.forEach(produto => { %>
+
+                <div class="produto-checkbox">
+                    <input
+                        type="checkbox"
+                        name="produtos"
+                        value="<%= produto.nome %>"
+                        data-preco="<%= produto.preco %>"
+                        onchange="calcularTotal()"
+                    >
+
+                    <span>
+                        <%= produto.nome %> - R$ <%= produto.preco %>
+                    </span>
+                </div>
+
+            <% }) %>
+
+            <label>Valor total:</label>
+            <input
+                type="number"
+                name="valorTotal"
+                id="valorTotal"
+                value="0"
+                readonly
+                required
+            >
+
+            <label>Status:</label>
+            <input type="text" name="status" value="Aprovado" required>
+
+            <button class="btn-salvar" type="submit">
+                Salvar
+            </button>
+
+        </form>
+
+        <br>
+
+        <a class="btn" href="/pedidos">Voltar</a>
+
+    </div>
+
+</div>
+
+<script>
+    function calcularTotal() {
+        const produtos = document.querySelectorAll('input[name="produtos"]:checked');
+
+        let total = 0;
+
+        produtos.forEach((produto) => {
+            total += Number(produto.dataset.preco);
+        });
+
+        document.getElementById("valorTotal").value = total;
+    }
+</script>
+
+</body>
+</html>

@@ -8,3 +8,4 @@
 [05/06/2026, 23:39:47] [ERROR] [inserirProduto] Erro ao inserir produto - Campo obrigatório ausente: nome
 [05/06/2026, 23:40:44] [ERROR] [inserirProduto] Erro ao inserir produto - Campo obrigatório ausente: nome
 [05/06/2026, 23:46:23] [INFO] [inserirProduto] Produto inserido com id: 6a2389ffb59df2292ea62d0a
+[29/06/2026, 02:18:10] [INFO] [inserirProduto] Produto inserido com id: 6a4200122829ec614ada28d3

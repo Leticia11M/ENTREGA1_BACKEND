@@ -1,8 +1,8 @@
-# 🎮 Gamer Store - Sistema de Gerenciamento de Produtos
+# 🎮 Gamer Store
 
-Projeto desenvolvido para a disciplina **Programação Web Back-End** utilizando **Node.js**, **Express.js**, **MongoDB**, **EJS**, **Sessions** e **JWT**.
+Sistema Web de gerenciamento de uma loja virtual desenvolvido para a disciplina **Programação Web Back-End** utilizando **Node.js**, **Express.js**, **MongoDB**, **EJS**, **Express Session** e **JWT**.
 
-O sistema simula uma loja virtual com autenticação de usuários e gerenciamento de produtos através de uma interface web moderna com tema gamer.
+O sistema possui autenticação de usuários e permite o gerenciamento completo de produtos e pedidos através de uma interface web moderna.
 
 ---
 
@@ -21,13 +21,15 @@ O sistema simula uma loja virtual com autenticação de usuários e gerenciament
 
 ---
 
-# 📁 Estrutura do Projeto
+# 📂 Estrutura do Projeto
 
 ```txt
 src/
 ├── controllers/
 │   ├── auth-controller.js
-│   └── produto-controller.js
+│   ├── login-controller.js
+│   ├── produto-controller.js
+│   └── pedido-controller.js
 │
 ├── database/
 │   └── connect.js
@@ -38,9 +40,15 @@ src/
 ├── middlewares/
 │   └── auth-jwt.js
 │
+├── pedidos/
+│   ├── buscar-pedidos.js
+│   ├── insert-pedido.js
+│   ├── atualizar-pedido.js
+│   └── deletar-pedido.js
+│
 ├── produtos/
-│   ├── insert-produto.js
 │   ├── buscar-produtos.js
+│   ├── insert-produto.js
 │   ├── atualizar-produto.js
 │   └── deletar-produto.js
 │
@@ -50,13 +58,17 @@ src/
 ├── routes/
 │   ├── auth-routes.js
 │   ├── login-routes.js
-│   └── produto-routes.js
+│   ├── produto-routes.js
+│   └── pedido-routes.js
 │
 ├── views/
 │   ├── login.ejs
 │   ├── produtos.ejs
 │   ├── novo-produto.ejs
-│   └── editar-produto.ejs
+│   ├── editar-produto.ejs
+│   ├── pedidos.ejs
+│   ├── novo-pedido.ejs
+│   └── editar-pedido.ejs
 │
 ├── app.js
 └── index.js
@@ -74,6 +86,8 @@ src/
 - Rotas protegidas
 - Autenticação JWT
 
+---
+
 ## 📦 Produtos
 
 - Cadastrar produto
@@ -81,28 +95,50 @@ src/
 - Editar produto
 - Excluir produto
 
+---
+
+## 📋 Pedidos
+
+- Cadastrar pedido
+- Listar pedidos
+- Editar pedido
+- Excluir pedido
+- Seleção de produtos cadastrados
+- Cálculo automático do valor total
+
+---
+
 ## 🎨 Interface
 
 - Layout Gamer
 - Tema Neon Verde e Roxo
 - Interface Responsiva
-- Formulários estilizados
+- Interface desenvolvida em EJS
 
 ---
 
 # 🗄 Banco de Dados
 
-Collection: produtos
+## Collection: produtos
 
 | Campo | Tipo |
-|---------|---------|
+|--------|------|
 | nome | String |
 | descricao | String |
 | preco | Number |
 | estoque | Number |
 | categoria | String |
-| criadoEm | Date |
-| atualizadoEm | Date |
+
+---
+
+## Collection: pedidos
+
+| Campo | Tipo |
+|--------|------|
+| cliente | String |
+| produtos | Array |
+| valorTotal | Number |
+| status | String |
 
 ---
 
@@ -117,28 +153,30 @@ Senha: 123456
 
 # 🔐 JWT
 
-Endpoint para geração de token:
+## Gerar Token
 
 ```http
 POST /login-api
 ```
 
-Exemplo:
+Body:
 
 ```json
 {
-  "email": "admin@email.com",
-  "senha": "123456"
+    "email":"admin@email.com",
+    "senha":"123456"
 }
 ```
 
-Endpoint protegido:
+---
+
+## Endpoint protegido
 
 ```http
 GET /perfil-api
 ```
 
-Necessário enviar:
+Enviar:
 
 ```txt
 Authorization: Bearer TOKEN
@@ -148,36 +186,36 @@ Authorization: Bearer TOKEN
 
 # ⚙️ Configuração
 
-Criar arquivo .env:
+Criar o arquivo `.env`
 
 ```env
-MONGO_URL=sua_url_mongodb
+MONGO_URL=sua_url_do_mongodb
 PORT=3000
 ```
 
 ---
 
-# ▶️ Executando o Projeto
+# ▶️ Como executar
 
-Instalar dependências:
+Instale as dependências:
 
 ```bash
 npm install
 ```
 
-Executar:
-
-```bash
-npm start
-```
-
-ou
+Execute o projeto:
 
 ```bash
 npm run dev
 ```
 
-Acessar:
+ou
+
+```bash
+npm start
+```
+
+Acesse:
 
 ```txt
 http://localhost:3000
@@ -185,15 +223,28 @@ http://localhost:3000
 
 ---
 
+# 📸 Funcionalidades do Sistema
+
+- Login de usuários
+- CRUD completo de Produtos
+- CRUD completo de Pedidos
+- Seleção de produtos no cadastro de pedidos
+- Cálculo automático do valor total do pedido
+- Interface moderna utilizando EJS e CSS
+- Sessões de usuário
+- API protegida com JWT
+
+---
+
 # 👩‍💻 Autora
 
-Letícia Fernanda Maioli Santos
+**Letícia Fernanda Maioli Santos**
 
-RA: 2525488
+**RA:** 2525488
 
-Curso: Engenharia de Computação
+**Curso:** Engenharia de Computação
 
-UTFPR – Universidade Tecnológica Federal do Paraná
+**Universidade Tecnológica Federal do Paraná - UTFPR**
 
 ---
 

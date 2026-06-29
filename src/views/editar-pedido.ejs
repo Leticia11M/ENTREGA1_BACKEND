@@ -1,0 +1,132 @@
+<html>
+<head>
+    <title>Editar Pedido</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="form-container">
+
+        <h1>Editar Pedido</h1>
+
+        <form action="/pedidos/editar/<%= pedido._id %>" method="POST">
+
+            <label>Cliente:</label>
+
+            <input
+                type="text"
+                name="cliente"
+                value="<%= pedido.cliente %>"
+                required
+            >
+
+            <label>Produtos:</label>
+
+            <% produtos.forEach(produto => { %>
+
+                <div style="margin-bottom:10px;">
+
+                    <input
+                        type="checkbox"
+                        name="produtos"
+                        value="<%= produto.nome %>"
+
+                        <%= Array.isArray(pedido.produtos)
+                            ? pedido.produtos.includes(produto.nome)
+                                ? "checked"
+                                : ""
+                            : pedido.produtos === produto.nome
+                                ? "checked"
+                                : ""
+                        %>
+                    >
+
+                    <%= produto.nome %>
+                    - R$ <%= produto.preco %>
+
+                </div>
+
+            <% }) %>
+
+            <label>Valor Total:</label>
+
+            <input
+                type="number"
+                name="valorTotal"
+                value="<%= pedido.valorTotal %>"
+                required
+            >
+
+            <label>Status:</label>
+
+            <select
+                name="status"
+                style="
+                    width:100%;
+                    padding:12px;
+                    border-radius:10px;
+                    background:#0b0f19;
+                    color:white;
+                    border:1px solid #22c55e;
+                    font-size:16px;
+                "
+            >
+
+                <option value="Pendente"
+                    <%= pedido.status=="Pendente" ? "selected" : "" %>>
+                    Pendente
+                </option>
+
+                <option value="Aprovado"
+                    <%= pedido.status=="Aprovado" ? "selected" : "" %>>
+                    Aprovado
+                </option>
+
+                <option value="Enviado"
+                    <%= pedido.status=="Enviado" ? "selected" : "" %>>
+                    Enviado
+                </option>
+
+                <option value="Entregue"
+                    <%= pedido.status=="Entregue" ? "selected" : "" %>>
+                    Entregue
+                </option>
+
+                <option value="Cancelado"
+                    <%= pedido.status=="Cancelado" ? "selected" : "" %>>
+                    Cancelado
+                </option>
+
+            </select>
+
+            <br><br>
+
+            <button
+                class="btn-salvar"
+                type="submit">
+
+                Atualizar
+
+            </button>
+
+        </form>
+
+        <br>
+
+        <a
+            class="btn"
+            href="/pedidos">
+
+            Voltar
+
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+</html>

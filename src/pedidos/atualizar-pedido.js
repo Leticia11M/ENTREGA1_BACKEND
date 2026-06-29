@@ -1,40 +1,22 @@
 import { ObjectId } from "mongodb";
-import connect from "../database/connect.js";
+import conectarBanco from "../database/connect.js";
 
-async function atualizarPedido(id, dadosAtualizados) {
+export default async function atualizarPedido(id, dadosAtualizados) {
 
-    if (!id) {
-        throw new Error("Campo obrigatório ausente: id");
-    }
+    const db = await conectarBanco();
 
-    try {
+    const collection = db.collection("pedidos");
 
-        const db = await connect();
+    return await collection.updateOne(
 
-        const collection = db.collection("pedidos");
+        {
+            _id: new ObjectId(id)
+        },
 
-        const resultado = await collection.updateOne(
-            { _id: new ObjectId(id) },
-            {
-                $set: {
-                    ...dadosAtualizados,
-                    atualizadoEm: new Date()
-                }
-            }
-        );
+        {
+            $set: dadosAtualizados
+        }
 
-        console.log("Pedido atualizado!");
-
-        return resultado;
-
-    } catch (erro) {
-
-        console.log("Erro ao atualizar pedido:", erro.message);
-
-        throw erro;
-
-    }
+    );
 
 }
-
-export default atualizarPedido;
